@@ -31,20 +31,20 @@ class App
     {
         $di = $this->getDi();
 
-        $di->parameters['\Aura\Http\Message\Response\StackBuilder'] = [
+        $di->params['\Aura\Http\Message\Response\StackBuilder'] = [
             'message_factory'   => $di->lazyGet('factory')
         ];
 
-        $di->parameters['\Aura\Http\Adapter\Curl'] = [
+        $di->params['\Aura\Http\Adapter\Curl'] = [
             'stack_builder'     => $di->lazyGet('stack')
         ];
 
-        $di->parameters['\Aura\Http\Manager'] = [
+        $di->params['\Aura\Http\Manager'] = [
             'message_factory'   => $di->lazyGet('factory'),
             'transport'         => $di->lazyGet('transport')
         ];
 
-        $di->parameters['\Aura\Http\Transport'] = [
+        $di->params['\Aura\Http\Transport'] = [
             'adapter'           => $di->lazyGet('curl'),
             'options'           => $di->lazyGet('options'),
             'phpfunc'           => $di->lazyGet('phpFunc')
@@ -53,11 +53,14 @@ class App
 
     protected function initCrawler()
     {
-        $this->getDi()->params['\Http\Crawler'] = [
-            'password' => 'injectedPassword',
-            'httpClient' => $this->getDi()->lazyGet('httpClient')
+        $di = $this->getDi();
+
+        $di ->params['\Http\Crawler'] = [
+            'password'          => 'injectedPassword',
+            'httpClient'        => $di->lazyGet('httpClient')
         ];
-        $this->getDi()->set('crawler', $this->getDi()->lazyNew('\Http\Crawler'));
+
+        $di ->set('crawler', $di->lazyNew('\Http\Crawler'));
     }
 
     /**
