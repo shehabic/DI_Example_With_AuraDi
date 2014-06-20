@@ -1,0 +1,21 @@
+{
+    "require": {
+        "aura/di": "*",
+        "aura/http": "*"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/auraphp/Aura.Http"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/auraphp/Aura.Di"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src"
+        }
+    }
+}
