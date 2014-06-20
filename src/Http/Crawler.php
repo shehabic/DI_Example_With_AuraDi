@@ -36,6 +36,6 @@ class Crawler
      */
     public function crawl($url)
     {
-        return "Crawling $url with username: $this->username and pass: $this->password \n";
+        return "Crawling {$url} with username: {$this->username} and pass: {$this->password} \n";
     }
 }
