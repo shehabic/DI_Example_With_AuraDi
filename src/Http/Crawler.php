@@ -15,8 +15,8 @@ class Crawler
 
     /**
      * @param $httpClient
-     * @param null $username
-     * @param null $password
+     * @param string $username
+     * @param string $password
      */
     public function __construct($httpClient, $username = null, $password = null)
     {
